@@ -43,7 +43,8 @@ module.exports = {
         references: {
           model: {
             tableName: 'Categories'
-          }
+          },
+          key: 'id'
         }
       },
       authorId: {
@@ -52,7 +53,8 @@ module.exports = {
         references: {
           model: {
             tableName: 'Users'
-          }
+          },
+          key: 'id'
         }
       },
       createdAt: {

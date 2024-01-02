@@ -23,8 +23,20 @@ module.exports = (sequelize, DataTypes) => {
     imgUrl: DataTypes.STRING,
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE,
-    categoryId: DataTypes.INTEGER,
-    authorId: DataTypes.INTEGER
+    categoryId: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "Categories",
+        key: "id"
+      }
+    },
+    authorId: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "Users",
+        key: "id"
+      }
+    }
   }, {
     sequelize,
     modelName: 'Product',

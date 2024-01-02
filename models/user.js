@@ -24,17 +24,50 @@ module.exports = (sequelize, DataTypes) => {
       },
       validate: {
         notNull: {
-          msg: 'Email cannot empty'
+          msg: 'Email cannot null'
         },
         notEmpty: {
           msg: 'Email cannot empty'
         }
       }
     },
-    password: DataTypes.STRING,
-    role: DataTypes.STRING,
-    phoneNumber: DataTypes.STRING,
-    address: DataTypes.STRING
+    password: {
+      type: DataTypes.STRING,
+      validate: {
+        notNull: {
+          msg: 'Password cannot null'
+        },
+        notEmpty: {
+          msg: 'Password cannot empty'
+        }
+      }
+    },
+    role: {
+      type: DataTypes.STRING,
+      defaultValue: 'Staff'
+    },
+    phoneNumber: {
+      type: DataTypes.STRING,
+      validate: {
+        notNull: {
+          msg: 'Phone number cannot null'
+        },
+        notEmpty: {
+          msg: 'Phone number cannot empty'
+        }
+      }
+    },
+    address: {
+      type: DataTypes.STRING,
+      validate: {
+        notNull: {
+          msg: 'Address cannot null'
+        },
+        notEmpty: {
+          msg: 'Address cannot empty'
+        }
+      }
+    }
   }, {
     sequelize,
     modelName: 'User',
