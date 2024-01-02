@@ -45,9 +45,10 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: {
           msg: 'Password cannot empty'
         },
-        len: {
-          args: 5,
-          msg: 'Minimal 5 characters'
+        minCharStr(value){
+          if (value.length < 5){
+            throw new Error('Minimal 5 Characters')
+          }
         }
       }
     },
@@ -80,6 +81,11 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
   }, {
+    hooks: {
+      beforeCreate: (instance) => {
+        instance.password = hashPass(instance.password);
+      }
+    },
     sequelize,
     modelName: 'User',
   });

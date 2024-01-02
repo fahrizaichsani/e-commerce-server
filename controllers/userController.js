@@ -5,7 +5,7 @@ class userController {
     try {
       const user = await User.create(req.body);
       res.status(201).json({
-        message: 'Reqister Success',
+        message: 'Register Success',
         id: user.id,
         email: user.email
       })
