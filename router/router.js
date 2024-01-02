@@ -4,7 +4,7 @@ const router = express.Router()
 
 //router user
 router.post('/register', userController.register)
-// router.post('/login')
+router.post('/login')
 
 //router global
 

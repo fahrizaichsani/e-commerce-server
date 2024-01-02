@@ -47,7 +47,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         minCharStr(value){
           if (value.length < 5){
-            throw new Error('Minimal 5 Characters')
+            throw 'Minimum 5 Characters'
           }
         }
       }
