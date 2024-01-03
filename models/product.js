@@ -11,8 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Product.belongsTo(models.Category);
-      Product.belongsTo(models.User);
+      Product.belongsTo(models.Category, { foreignKey: 'categoryId' });
+      Product.belongsTo(models.User, { foreignKey: 'authorId' });
     }
   }
   Product.init({
@@ -51,7 +51,7 @@ module.exports = (sequelize, DataTypes) => {
           msg: 'Price cannot empty'
         },
         pricing(value) {
-          if (value < 1000){
+          if (value < 1000) {
             throw 'Price must be above 1000'
           }
         }
@@ -59,8 +59,6 @@ module.exports = (sequelize, DataTypes) => {
     },
     stock: DataTypes.INTEGER,
     imgUrl: DataTypes.STRING,
-    createdAt: DataTypes.DATE,
-    updatedAt: DataTypes.DATE,
     categoryId: {
       type: DataTypes.INTEGER,
       allowNull: false,
