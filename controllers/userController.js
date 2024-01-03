@@ -1,3 +1,4 @@
+const { comparePass } = require("../helper/bcrypt");
 const { User } = require("../models");
 
 class UserController {
@@ -14,12 +15,33 @@ class UserController {
     }
   }
 
-  static async login(req, res) {
+  static async login(req, res, next) {
     try {
+      const { email, password } = req.body
+
+      if (!email) {
+        throw { name: 'Input email' }
+      }
+
+      if (!password) {
+        throw { name: 'Input password' }
+      }
+
+      const checkEmail = await User.findOne({
+        where: {
+          email: email
+        }
+      })
+
+      if (!checkEmail) {
+        throw { name: 'cant login' }
+      }
+
+      const checkPassword = comparePass(password, )
+
 
     } catch (error) {
-      console.log(error);
-      res.status(500).json({ message: 'Internal Server Error' })
+      next(error)
     }
   }
 }

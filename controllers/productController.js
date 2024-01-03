@@ -51,9 +51,9 @@ class ProductController {
         }
     }
 
-    static async updateProductByid(req, res, next) {
+    static async updateProductById(req, res, next) {
         try {
-            const updateProduct = await Product.update(req.body, {
+            await Product.update(req.body, {
                 where: {
                     id: req.params.id
                 }
@@ -70,6 +70,30 @@ class ProductController {
                 data: afterUpdateProduct
             })
         } catch (error) {
+            next(error)
+        }
+    }
+
+    static async deleteProductById(req, res, next) {
+        try {
+            const beforeDeleteProduct = await Product.findByPk(req.params.id)
+
+            if (!beforeDeleteProduct) {
+                throw { name: 'error not found' }
+            }
+
+            await Product.destroy({
+                where: {
+                    id: req.params.id
+                }
+            })
+
+            res.status(200).json({
+                data: beforeDeleteProduct,
+                message: 'Delete Success'
+            })
+        } catch (error) {
+            console.log(error);
             next(error)
         }
     }
