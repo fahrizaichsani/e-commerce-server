@@ -8,7 +8,7 @@ const router = express.Router()
 
 //router user
 router.post('/register', UserController.register)
-router.post('/login')
+router.post('/login', UserController.login)
 
 //router product
 router.post('/products', ProductController.addProduct)

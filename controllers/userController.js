@@ -1,4 +1,5 @@
 const { comparePass } = require("../helper/bcrypt");
+const { signToken } = require("../helper/jwt");
 const { User } = require("../models");
 
 class UserController {
@@ -20,27 +21,35 @@ class UserController {
       const { email, password } = req.body
 
       if (!email) {
-        throw { name: 'Input email' }
+        throw { name: 'Email cannot empty' }
       }
 
       if (!password) {
-        throw { name: 'Input password' }
+        throw { name: 'Password cannot empty' }
       }
 
-      const checkEmail = await User.findOne({
+      const user = await User.findOne({
         where: {
           email: email
         }
       })
 
-      if (!checkEmail) {
+      if (!user) {
         throw { name: 'cant login' }
       }
 
-      const checkPassword = comparePass(password, )
+      const checkPassword = comparePass(password, user.password)
 
+      if (!checkPassword) {
+        throw { name: 'cant login' }
+      }
+
+      const accessToken = signToken({ id: user.id, email: email.id })
+
+      res.status(200).json({ accessToken })
 
     } catch (error) {
+      console.log(error);
       next(error)
     }
   }

@@ -2,8 +2,6 @@ const errorHandler = (error, req, res, next) => {
     switch (error.name) {
         case 'SequelizeValidationError':
         case 'SequelizeUniqueConstraintError':
-        case 'Input email':
-        case 'Input password':
             res.status(400).json({ message: error.errors[0].message })
             break;
         case 'error not found':
@@ -11,6 +9,11 @@ const errorHandler = (error, req, res, next) => {
             break;
         case 'cant login':
             res.status(401).json({ message: 'Invalid email and password' })
+            break;
+        case 'Email cannot empty':
+            res.status(400).json({ message: 'Email cannot empty' })
+        case 'Password cannot empty':
+            res.status(400).json({ message: 'Password cannot empty' })
         default:
             res.status(500).json({ message: 'Internal Server Error' })
             break;
