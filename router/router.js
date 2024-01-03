@@ -4,6 +4,7 @@ const ProductController = require('../controllers/productController')
 const { errorHandler } = require('../middleware/errorHandler')
 const CategoryController = require('../controllers/categoryController')
 const PubController = require('../controllers/pubController')
+const { authentication } = require('../middleware/authentication')
 const router = express.Router()
 
 //router user
