@@ -15,9 +15,9 @@ router.post('/login', UserController.login)
 
 //router product
 router.post('/products', ProductController.addProduct)
-router.get('/products', authorizationConditional, ProductController.showProduct)
+router.get('/products', ProductController.showProduct)
 router.get('/products/:id', ProductController.showProductById)
-router.put('/products/:id', ProductController.updateProductById)
+router.put('/products/:id', authorizationConditional, ProductController.updateProductById)
 router.delete('/products/:id', ProductController.deleteProductById)
 
 //router category
