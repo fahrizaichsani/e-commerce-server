@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       validate: {
         notNull: {
-          msg: 'Email cannot null'
+          msg: 'Email cannot empty'
         },
         notEmpty: {
           msg: 'Email cannot empty'
@@ -40,7 +40,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         notNull: {
-          msg: 'Password cannot null'
+          msg: 'Password cannot empty'
         },
         notEmpty: {
           msg: 'Password cannot empty'
@@ -61,7 +61,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         notNull: {
-          msg: 'Phone number cannot null'
+          msg: 'Phone number cannot empty'
         },
         notEmpty: {
           msg: 'Phone number cannot empty'
@@ -73,7 +73,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         notNull: {
-          msg: 'Address cannot null'
+          msg: 'Address cannot empty'
         },
         notEmpty: {
           msg: 'Address cannot empty'

@@ -4,6 +4,7 @@ const { User } = require('../models')
 class ProductController {
     static async addProduct(req, res, next) {
         try {
+            req.body.authorId = req.user.id
             const product = await Product.create(req.body)
             res.status(201).json({
                 message: 'Add Product Success',

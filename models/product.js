@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         notNull: {
-          msg: 'Name cannot null'
+          msg: 'Name cannot empty'
         },
         notEmpty: {
           msg: 'Name cannot empty'
@@ -33,7 +33,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         notNull: {
-          msg: 'Description cannot null'
+          msg: 'Description cannot empty'
         },
         notEmpty: {
           msg: 'Description cannot empty'
@@ -45,7 +45,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         notNull: {
-          msg: 'Price cannot null'
+          msg: 'Price cannot empty'
         },
         notEmpty: {
           msg: 'Price cannot empty'
@@ -68,7 +68,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       validate: {
         notNull: {
-          msg: 'Category Id cannot null'
+          msg: 'Category Id cannot empty'
         },
         notEmpty: {
           msg: 'Category Id cannot empty'
@@ -84,7 +84,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       validate: {
         notNull: {
-          msg: 'Author Id cannot null'
+          msg: 'Author Id cannot empty'
         },
         notEmpty: {
           msg: 'Author Id cannot empty'

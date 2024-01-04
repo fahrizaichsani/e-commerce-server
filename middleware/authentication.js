@@ -13,14 +13,15 @@ const authentication = async (req, res, next) => {
             throw { name: 'Unauthorized' }
         }
 
-        const payload = verifyToken(token) //apakah selalu menangkap Id
+        const payload = verifyToken(token) 
+        console.log(payload);
 
         const user = await User.findByPk(payload.id)
         if (!user) {
             throw { name: 'Unauthorized' }
         }
 
-        req.user = user //lupaaaa
+        req.user = user 
 
         next()
     } catch (error) {

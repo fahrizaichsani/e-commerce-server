@@ -1,0 +1,10 @@
+[
+    {
+        "username": "admin",
+        "email": "admin@mail.com",
+        "password": "admin",
+        "role": "Admin",
+        "phoneNumber": "00000",
+        "address": "dimana aja"
+    }
+]

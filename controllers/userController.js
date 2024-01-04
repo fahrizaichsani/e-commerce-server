@@ -3,7 +3,7 @@ const { signToken } = require("../helper/jwt");
 const { User } = require("../models");
 
 class UserController {
-  static async register(req, res, next) {
+  static async addUser(req, res, next) {
     try {
       const user = await User.create(req.body);
       res.status(201).json({

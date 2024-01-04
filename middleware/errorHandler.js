@@ -10,6 +10,8 @@ const errorHandler = (error, req, res, next) => {
         case 'cant login':
             res.status(401).json({ message: 'Invalid email and password' })
             break;
+        case 'Forbidden':
+            res.status(403).json({ message: 'Forbidden' })
         case 'Email cannot empty':
             res.status(400).json({ message: 'Email cannot empty' })
         case 'Password cannot empty':

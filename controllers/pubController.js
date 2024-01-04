@@ -17,7 +17,15 @@ class PubController {
 
     static async detailProducts(req, res, next) {
         try {
-         
+            const detailProduct = await Product.findByPk(req.params.id)
+
+            if (!detailProduct) {
+                throw { name: 'error not found' }
+            }
+
+            res.status(200).json(
+                detailProduct
+            )
         } catch (error) {
             console.log(error);
             next(error)
