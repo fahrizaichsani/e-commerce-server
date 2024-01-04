@@ -44,7 +44,7 @@ class UserController {
         throw { name: 'cant login' }
       }
 
-      const accessToken = signToken({ id: user.id, email: user.email }) //apakah bisa menggunakan payload yang lain?
+      const accessToken = signToken({ id: user.id, email: user.email }) 
 
       res.status(200).json({ accessToken })
 

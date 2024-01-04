@@ -1,5 +1,5 @@
+const express = require('express')
 const PubController = require('../controllers/pubController')
-const { authentication } = require('../middleware/authentication')
 const { authorizationAdminOnly } = require('../middleware/authorizationForAdmin')
 const { authorizationConditional } = require('../middleware/authorizationAdminStaff')
 const router = express.Router()

@@ -2,13 +2,18 @@ const express = require('express')
 const { errorHandler } = require('../middleware/errorHandler')
 const { authentication } = require('../middleware/authentication')
 const { authorizationAdminOnly } = require('../middleware/authorizationForAdmin')
-const { authorizationConditional } = require('../middleware/authorizationAdminStaff')
+const UserController = require('../controllers/userController')
 const router = express.Router()
 
-router.use('/categories', require('./category'))
 router.use('/publics', require('./public'))
-router.use('/products', require('./category'))
-router.use('/users', require('./user'))
+router.post('/login', UserController.login)
+
+router.use(authentication)
+
+router.post('/add-user', authorizationAdminOnly, UserController.addUser)
+router.use('/categories', require('./category'))
+router.use('/products', require('./product'))
+
 router.use(errorHandler)
 
 module.exports = router
