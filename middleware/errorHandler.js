@@ -22,6 +22,9 @@ const errorHandler = (error, req, res, next) => {
         case 'Unathorized':
             res.status(401).json({ message: 'Unathorized' })
             break;
+        case 'Please upload an image':
+            res.status(400).json({ message: 'Please upload an image' })
+            break;
         default:
             res.status(500).json({ message: 'Internal Server Error' })
             break;

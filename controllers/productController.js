@@ -1,6 +1,14 @@
 const { Product } = require('../models')
 const { Category } = require('../models')
 const { User } = require('../models')
+const cloudinary = require('cloudinary').v2
+
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET,
+});
+
 class ProductController {
     static async addProduct(req, res, next) {
         try {
@@ -93,6 +101,41 @@ class ProductController {
                 data: beforeDeleteProduct,
                 message: 'Delete Success'
             })
+        } catch (error) {
+            console.log(error);
+            next(error)
+        }
+    }
+
+    static async updateImageUrlById(req, res, next) {
+        try {
+            const product = await Product.findByPk(req.params.id)
+            if (!product) {
+                throw { name: 'not found' }
+            }
+
+            if (!req.file) {
+                throw { name: 'Please upload an image' }
+            }
+
+            const base64Image = Buffer.from(req.file.buffer).toString('base64')
+            const base64Url = `data:${req.file.mimetype};base64,${base64Image}`
+
+            const result = await cloudinary.uploader.upload(base64Url, {
+                public_id: `${req.file.originalname}`,
+                folder: 'hck66'
+            })
+
+            await Product.update({
+                imgUrl: result.secure_url
+            }, {
+                where: { id: req.params.id }
+            })
+
+            res.status(200).json({
+                message: `Image ${product.imgUrl} success to update`
+            })
+
         } catch (error) {
             console.log(error);
             next(error)

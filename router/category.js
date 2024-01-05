@@ -5,7 +5,7 @@ const router = express.Router()
 
 router.post('/', CategoryController.addCategory)
 router.get('/', CategoryController.showCategories)
-router.put('/:id', authorizationConditional, CategoryController.updateCategoryById)
-router.delete('/:id', authorizationConditional, CategoryController.deleteCategoryById)
+router.put('/:id', CategoryController.updateCategoryById)
+router.delete('/:id', CategoryController.deleteCategoryById)
 
 module.exports = router
