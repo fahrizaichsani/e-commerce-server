@@ -6,12 +6,14 @@ class UserController {
   static async addUser(req, res, next) {
     try {
       const user = await User.create(req.body);
+
       res.status(201).json({
         message: 'Register Success',
         id: user.id,
         email: user.email
       })
     } catch (error) {
+      console.log(error);
       next(error)
     }
   }
@@ -44,7 +46,7 @@ class UserController {
         throw { name: 'cant login' }
       }
 
-      const accessToken = signToken({ id: user.id, email: user.email }) 
+      const accessToken = signToken({ id: user.id, email: user.email })
 
       res.status(200).json({ accessToken })
 

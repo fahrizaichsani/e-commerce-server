@@ -47,7 +47,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         minCharStr(value){
           if (value.length < 5){
-            throw 'Minimum 5 Characters'
+            throw 'Minimum 5 characters password'
           }
         }
       }
@@ -56,30 +56,8 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       defaultValue: 'Staff'
     },
-    phoneNumber: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notNull: {
-          msg: 'Phone number cannot empty'
-        },
-        notEmpty: {
-          msg: 'Phone number cannot empty'
-        }
-      }
-    },
-    address: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notNull: {
-          msg: 'Address cannot empty'
-        },
-        notEmpty: {
-          msg: 'Address cannot empty'
-        }
-      }
-    }
+    phoneNumber: DataTypes.STRING,
+    address: DataTypes.STRING
   }, {
     hooks: {
       beforeCreate: (instance) => {

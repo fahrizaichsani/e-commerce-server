@@ -5,8 +5,7 @@ class CategoryController {
             const category = await Category.create(req.body)
             res.status(201).json({
                 message: 'Add Category Success',
-                id: category.id,
-                name: category.name
+                category
             })
         } catch (error) {
             next(error)
@@ -64,7 +63,7 @@ class CategoryController {
 
             res.status(200).json({
                 data: beforeDeleteCategory,
-                message: 'Delete Success'
+                message: `${beforeDeleteCategory.name} success to delete`
             })
         } catch (error) {
             console.log(error);
