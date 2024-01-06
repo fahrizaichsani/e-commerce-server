@@ -6,7 +6,7 @@ const { Op } = require('sequelize')
 class PubController {
     static async showProducts(req, res, next) {
         try {
-            const { search, sorting, page } = req.query
+            const { search, sorting, filter, page } = req.query
             const query = {}
             const limit = 10
             
@@ -24,7 +24,11 @@ class PubController {
             if (sorting) {
                 query.order = [['createdAt', sorting]]
             }
-            
+            if (filter) {
+                query.where = {
+                    categoryId: filter
+                }
+            }
 
             const allProducts = await Product.findAll(query)
             res.status(200).json(
