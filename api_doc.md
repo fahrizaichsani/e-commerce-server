@@ -45,6 +45,9 @@ List of available endpoints:
 - `GET /products/:id`
 - `PUT /products/:id`
 - `DELETE /products/:id`
+- `GET /publics/pub`
+- `GET /publics/pub/:id`
+- `PATCH /products/:id`
 
 &nbsp;
 
@@ -196,6 +199,7 @@ _Response (400 - Bad Request)_
 &nbsp;
 
 ## 4. GET /categories
+
 Description: Get all categories
 
 Request:
@@ -231,6 +235,7 @@ _Response (200 - OK)_
 &nbsp;
 
 ## 5. PUT /categories/:id
+
 Description: Update specific category based on id
 
 Request:
@@ -283,6 +288,7 @@ _Response (400 - Bad Request)_
 &nbsp;
 
 ## 6. DELETE /categories/:id
+
 Description: Delete specific category based on id
 
 Request:
@@ -459,6 +465,7 @@ _Response (200 - OK)_
 &nbsp;
 
 ## 9. GET /products/:id
+
 Description: Get specific product based on id
 
 Request:
@@ -589,6 +596,7 @@ OR
 &nbsp;
 
 ## 11. DELETE /products/:id
+
 Description: Delete specific product based on id (Admin can delete all products while staff can only delete their own)
 
 Request:
@@ -628,6 +636,257 @@ _Response (404 - Not Found)_
 }
 ```
 
+&nbsp;
+
+## 12. GET /publics/pub
+
+Description: Get all products based on optional query parameters
+
+Request:
+
+- params:
+
+```json
+{
+  "search": "string (optional)"
+},
+{
+  "sorting": "string (optional)"
+},
+{
+  "filter": "integer (optional)"
+},
+{
+  "page": "integer (optional)"
+},
+{
+  "limit": "integer (optional)"
+}
+```
+
+For searching products by category
+
+```json
+url = http://localhost:3000/publics/pub
+params = {"search": "glove"}
+```
+
+_Response (200 - OK)_
+
+```json
+[
+  {
+    "id": 1,
+    "name": "Black glove",
+    "description": "glove",
+    "price": 100000,
+    "stock": 100,
+    "imgUrl": "image_url",
+    "categoryId": 1,
+    "authorId": 1,
+    "createdAt": "2024-01-06T10:35:35.776Z",
+    "updatedAt": "2024-01-06T10:35:35.776Z"
+  },
+  {
+    "id": 2,
+    "name": "White glove",
+    "description": "glove",
+    "price": 100000,
+    "stock": 100,
+    "imgUrl": "image_url",
+    "categoryId": 1,
+    "authorId": 2,
+    "createdAt": "2024-01-06T10:35:35.776Z",
+    "updatedAt": "2024-01-06T10:35:35.776Z"
+  }
+  ...
+]
+```
+
+For sorting products by created date (ASC/DESC option)
+
+```json
+url = http://localhost:3000/publics/pub
+params = {"sorting": "DESC"}
+```
+
+_Response (200 - OK)_
+
+```json
+[
+  {
+    "id": 22,
+    "name": "Yellow shoe",
+    "description": "shoe",
+    "price": 1000000,
+    "stock": 10,
+    "imgUrl": "image_url",
+    "categoryId": 5,
+    "authorId": 1,
+    "createdAt": "2024-01-06T12:15:15.720Z",
+    "updatedAt": "2024-01-06T12:15:15.720Z"
+  },
+  {
+    "id": 21,
+    "name": "Red shoe",
+    "description": "shoe",
+    "price": 1000000,
+    "stock": 10,
+    "imgUrl": "image_url",
+    "categoryId": 5,
+    "authorId": 1,
+    "createdAt": "2024-01-06T10:35:45.304Z",
+    "updatedAt": "2024-01-06T10:35:45.304Z"
+  },
+  {
+    "id": 3,
+    "name": "Red glove",
+    "description": "glove",
+    "price": 100000,
+    "stock": 100,
+    "imgUrl": "image_url",
+    "categoryId": 1,
+    "authorId": 3,
+    "createdAt": "2024-01-06T10:35:35.776Z",
+    "updatedAt": "2024-01-06T10:35:35.776Z"
+  }
+  ...
+]
+```
+
+For filter products by category
+
+```json
+url = http://localhost:3000/publics/pub
+params = {"filter": 1}
+```
+
+_Response (200 - OK)_
+
+```json
+[
+  {
+    "id": 1,
+    "name": "Black glove",
+    "description": "glove",
+    "price": 100000,
+    "stock": 100,
+    "imgUrl": "image_url",
+    "categoryId": 1,
+    "authorId": 1,
+    "createdAt": "2024-01-06T10:35:35.776Z",
+    "updatedAt": "2024-01-06T10:35:35.776Z"
+  },
+  {
+    "id": 2,
+    "name": "White glove",
+    "description": "glove",
+    "price": 100000,
+    "stock": 100,
+    "imgUrl": "image_url",
+    "categoryId": 1,
+    "authorId": 2,
+    "createdAt": "2024-01-06T10:35:35.776Z",
+    "updatedAt": "2024-01-06T10:35:35.776Z"
+  },
+  {
+    "id": 3,
+    "name": "Red glove",
+    "description": "glove",
+    "price": 100000,
+    "stock": 100,
+    "imgUrl": "image_url",
+    "categoryId": 1,
+    "authorId": 3,
+    "createdAt": "2024-01-06T10:35:35.776Z",
+    "updatedAt": "2024-01-06T10:35:35.776Z"
+  }
+  ...
+]
+```
+
+Pagination with 10 limit data
+
+```json
+url = http://localhost:3000/publics/pub
+params = {"page": 2}
+```
+
+_Response (200 - OK)_
+
+```json
+[
+  {
+    "id": 11,
+    "name": "Black jacket",
+    "description": "jacket",
+    "price": 100000,
+    "stock": 100,
+    "imgUrl": "image_url",
+    "categoryId": 3,
+    "authorId": 1,
+    "createdAt": "2024-01-06T10:35:35.776Z",
+    "updatedAt": "2024-01-06T10:35:35.776Z"
+  },
+  {
+    "id": 12,
+    "name": "White jacket",
+    "description": "jacket",
+    "price": 100000,
+    "stock": 100,
+    "imgUrl": "image_url",
+    "categoryId": 3,
+    "authorId": 2,
+    "createdAt": "2024-01-06T10:35:35.776Z",
+    "updatedAt": "2024-01-06T10:35:35.776Z"
+  },
+  ...
+]
+```
+
+&nbsp;
+
+## 13. GET /publics/pub/:id
+Description: Get product by id for publics
+
+Request:
+
+- params:
+
+```json
+{
+  "id": "integer (required)"
+}
+```
+
+_Response (200 - OK)_
+
+```json
+{
+  "id": 1,
+  "name": "Black glove",
+  "description": "glove",
+  "price": 100000,
+  "stock": 100,
+  "imgUrl": "image_url",
+  "categoryId": 1,
+  "authorId": 1,
+  "createdAt": "2024-01-06T10:35:35.776Z",
+  "updatedAt": "2024-01-06T10:35:35.776Z"
+}
+```
+
+_Response (404 - Not Found)_
+
+```json
+{
+  "message": "Data not found"
+}
+```
+&nbsp;
+
+## 14. PATCH /products/:id
+Description: Upload image
 &nbsp;
 
 ## Global Error
