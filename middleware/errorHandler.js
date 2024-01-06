@@ -5,10 +5,10 @@ const errorHandler = (error, req, res, next) => {
             res.status(400).json({ message: error.errors[0].message })
             break;
         case 'error not found':
-            res.status(404).json({ message: 'not found' })
+            res.status(404).json({ message: 'Data not found' })
             break;
         case 'cant login':
-            res.status(401).json({ message: 'Invalid email and password' })
+            res.status(401).json({ message: 'user not found' })
             break;
         case 'Forbidden':
             res.status(403).json({ message: 'Forbidden' })
@@ -26,7 +26,7 @@ const errorHandler = (error, req, res, next) => {
             res.status(400).json({ message: 'Please upload an image' })
             break;
         default:
-            res.status(500).json({ message: 'Internal Server Error' })
+            res.status(500).json({ message: 'Internal server error' })
             break;
     }
 }

@@ -6,9 +6,14 @@ const { Op } = require('sequelize')
 class PubController {
     static async showProducts(req, res, next) {
         try {
-            const { search } = req.query
+            const { search, page } = req.query
             const query = {}
-
+            const limit = 10
+            
+            if (page) {
+                query.limit = limit
+                query.offset = limit * (page - 1)
+            }
             if (search) {
                 query.where = {
                     name: {
@@ -16,6 +21,7 @@ class PubController {
                     }
                 }
             }
+
             const allProducts = await Product.findAll(query)
             res.status(200).json(
                 allProducts

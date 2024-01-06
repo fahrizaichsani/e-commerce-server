@@ -147,7 +147,7 @@ _Response (401 - Unauthorized)_
 
 ```json
 {
-  "message": "Invalid email and password"
+  "message": "user not found"
 }
 ```
 
@@ -268,7 +268,7 @@ _Response (404 - Not Found)_
 
 ```json
 {
-  "message": "not found"
+  "message": "Data not found"
 }
 ```
 
@@ -317,7 +317,7 @@ _Response (404 - Not Found)_
 
 ```json
 {
-  "message": "not found"
+  "message": "Data not found"
 }
 ```
 
@@ -500,7 +500,7 @@ _Response (404 - Not Found)_
 
 ```json
 {
-  "message": "not found"
+  "message": "Data not found"
 }
 ```
 
@@ -562,7 +562,7 @@ _Response (404 - Not Found)_
 
 ```json
 {
-  "message": "not found"
+  "message": "Data not found"
 }
 ```
 
@@ -624,7 +624,7 @@ _Response (404 - Not Found)_
 
 ```json
 {
-  "message": "not found"
+  "message": "Data not found"
 }
 ```
 
