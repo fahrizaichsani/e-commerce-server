@@ -4,8 +4,10 @@ class CategoryController {
         try {
             const category = await Category.create(req.body)
             res.status(201).json({
-                message: 'Add Category Success',
-                category
+                id: category.id,
+                name: category.name,
+                updatedAt: category.updatedAt,
+                createdAt: category.createdAt
             })
         } catch (error) {
             next(error)
@@ -39,8 +41,10 @@ class CategoryController {
             }
 
             res.status(200).json({
-                message: 'Update Success',
-                data: afterUpdateCategory
+                id: afterUpdateCategory.id,
+                name: afterUpdateCategory.name,
+                createdAt: afterUpdateCategory.createdAt,
+                updatedAt: afterUpdateCategory.updatedAt
             })
         } catch (error) {
             next(error)
@@ -62,7 +66,6 @@ class CategoryController {
             })
 
             res.status(200).json({
-                data: beforeDeleteCategory,
                 message: `${beforeDeleteCategory.name} success to delete`
             })
         } catch (error) {

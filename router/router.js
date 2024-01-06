@@ -3,6 +3,7 @@ const { errorHandler } = require('../middleware/errorHandler')
 const { authentication } = require('../middleware/authentication')
 const { authorizationAdminOnly } = require('../middleware/authorizationForAdmin')
 const UserController = require('../controllers/userController')
+const PubController = require('../controllers/pubController')
 const router = express.Router()
 
 router.use('/publics', require('./public'))

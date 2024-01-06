@@ -53,7 +53,7 @@ module.exports = (sequelize, DataTypes) => {
         pricing(value) {
           if (value < 1000) {
             throw 'Price must be above 1000'
-          }
+          } 
         }
       }
     },

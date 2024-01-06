@@ -1,9 +1,12 @@
 [
     {
+        "name": "Glove"
+    },
+    {
         "name": "Shirt"
     },
     {
-        "name": "Outer"
+        "name": "Jacket"
     },
     {
         "name": "Pant"

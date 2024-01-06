@@ -11,6 +11,7 @@ router.get('/:id', ProductController.showProductById)
 router.put('/:id', authorizationConditional, ProductController.updateProductById)
 router.delete('/:id', authorizationConditional, ProductController.deleteProductById)
 
+
 //Upload email
 router.patch('/:id', authorizationConditional, upload.single('imgUrl'), ProductController.updateImageUrlById)
 

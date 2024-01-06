@@ -15,13 +15,13 @@ class ProductController {
             req.body.authorId = req.user.id
             const product = await Product.create(req.body)
             res.status(201).json({
-                message: 'Add Product Success',
                 id: product.id,
                 name: product.name,
                 description: product.description,
                 price: product.price,
                 stock: product.stock,
                 imgUrl: product.imgUrl,
+                categoryId: product.categoryId,
                 createdAt: product.createdAt,
                 updatedAt: product.updatedAt
             })
@@ -33,7 +33,7 @@ class ProductController {
     static async showProduct(req, res, next) {
         try {
             const allProducts = await Product.findAll({
-                include: [{ model: Category }, { model: User, attributes: { exclude: ['password'] } }]
+                include: [{ model: User, attributes: { exclude: ['password'] } }]
             })
 
             res.status(200).json(
@@ -75,8 +75,16 @@ class ProductController {
             }
 
             res.status(200).json({
-                message: 'Update Success',
-                data: afterUpdateProduct
+                id: afterUpdateProduct.id,
+                name: afterUpdateProduct.name,
+                description: afterUpdateProduct.description,
+                price: afterUpdateProduct.price,
+                stock: afterUpdateProduct.stock,
+                imgUrl: afterUpdateProduct.imgUrl,
+                categoryId: afterUpdateProduct.categoryId,
+                authorId: afterUpdateProduct.authorId,
+                createdAt: afterUpdateProduct.createdAt,
+                updatedAt: afterUpdateProduct.updatedAt
             })
         } catch (error) {
             next(error)
@@ -98,8 +106,7 @@ class ProductController {
             })
 
             res.status(200).json({
-                data: beforeDeleteProduct,
-                message: 'Delete Success'
+                message: `${beforeDeleteProduct.name} success to delete`
             })
         } catch (error) {
             console.log(error);

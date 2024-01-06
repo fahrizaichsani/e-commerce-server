@@ -1,0 +1,42 @@
+[
+    {
+        "username": "admin",
+        "email": "admin@mail.com",
+        "password": "admin",
+        "role": "Admin",
+        "phoneNumber": "08212121",
+        "address": "Indonesia"
+    },
+    {
+        "username": "admin2",
+        "email": "admin2@mail.com",
+        "password": "admin2",
+        "role": "Admin",
+        "phoneNumber": "08212121",
+        "address": "Indonesia"
+    },
+    {
+        "username": "staff",
+        "email": "staff@mail.com",
+        "password": "staff",
+        "role": "Staff",
+        "phoneNumber": "08212121",
+        "address": "Indonesia"
+    },
+    {
+        "username": "staff2",
+        "email": "staff2@mail.com",
+        "password": "staff2",
+        "role": "Staff",
+        "phoneNumber": "08212121",
+        "address": "Indonesia"
+    },
+    {
+        "username": "staff3",
+        "email": "staff3@mail.com",
+        "password": "staff3",
+        "role": "Staff",
+        "phoneNumber": "08212121",
+        "address": "Indonesia"
+    }
+]

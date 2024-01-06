@@ -1,0 +1,181 @@
+[
+    {
+        "name": "Black glove",
+        "description": "glove",
+        "price": 100000,
+        "stock": 100,
+        "imgUrl": "image_url",
+        "categoryId": 1,
+        "authorId": 1
+    },
+    {
+        "name": "White glove",
+        "description": "glove",
+        "price": 100000,
+        "stock": 100,
+        "imgUrl": "image_url",
+        "categoryId": 1,
+        "authorId": 2
+    },
+    {
+        "name": "Red glove",
+        "description": "glove",
+        "price": 100000,
+        "stock": 100,
+        "imgUrl": "image_url",
+        "categoryId": 1,
+        "authorId": 3
+    },
+    {
+        "name": "Yellow glove",
+        "description": "glove",
+        "price": 100000,
+        "stock": 100,
+        "imgUrl": "image_url",
+        "categoryId": 1,
+        "authorId": 4
+    },
+    {
+        "name": "Green glove",
+        "description": "glove",
+        "price": 100000,
+        "stock": 100,
+        "imgUrl": "image_url",
+        "categoryId": 1,
+        "authorId": 5
+    },
+    {
+        "name": "Black shirt",
+        "description": "shirt",
+        "price": 100000,
+        "stock": 100,
+        "imgUrl": "image_url",
+        "categoryId": 2,
+        "authorId": 1
+    },
+    {
+        "name": "White shirt",
+        "description": "shirt",
+        "price": 100000,
+        "stock": 100,
+        "imgUrl": "image_url",
+        "categoryId": 2,
+        "authorId": 2
+    },
+    {
+        "name": "Red shirt",
+        "description": "shirt",
+        "price": 100000,
+        "stock": 100,
+        "imgUrl": "image_url",
+        "categoryId": 2,
+        "authorId": 3
+    },
+    {
+        "name": "Yellow shirt",
+        "description": "shirt",
+        "price": 100000,
+        "stock": 100,
+        "imgUrl": "image_url",
+        "categoryId": 2,
+        "authorId": 4
+    },{
+        "name": "Green shirt",
+        "description": "shirt",
+        "price": 100000,
+        "stock": 100,
+        "imgUrl": "image_url",
+        "categoryId": 2,
+        "authorId": 5
+    },
+    {
+        "name": "Black jacket",
+        "description": "jacket",
+        "price": 100000,
+        "stock": 100,
+        "imgUrl": "image_url",
+        "categoryId": 3,
+        "authorId": 1
+    },
+    {
+        "name": "White jacket",
+        "description": "jacket",
+        "price": 100000,
+        "stock": 100,
+        "imgUrl": "image_url",
+        "categoryId": 3,
+        "authorId": 2
+    },
+    {
+        "name": "Red jacket",
+        "description": "jacket",
+        "price": 100000,
+        "stock": 100,
+        "imgUrl": "image_url",
+        "categoryId": 3,
+        "authorId": 3
+    },
+    {
+        "name": "Yellow jacket",
+        "description": "jacket",
+        "price": 100000,
+        "stock": 100,
+        "imgUrl": "image_url",
+        "categoryId": 3,
+        "authorId": 4
+    },
+    {
+        "name": "Green jacket",
+        "description": "jacket",
+        "price": 100000,
+        "stock": 100,
+        "imgUrl": "image_url",
+        "categoryId": 3,
+        "authorId": 5
+    },
+    {
+        "name": "Black pant",
+        "description": "pant",
+        "price": 100000,
+        "stock": 100,
+        "imgUrl": "image_url",
+        "categoryId": 4,
+        "authorId": 1
+    },
+    {
+        "name": "White pant",
+        "description": "pant",
+        "price": 100000,
+        "stock": 100,
+        "imgUrl": "image_url",
+        "categoryId": 4,
+        "authorId": 2
+    },
+    {
+        "name": "Red pant",
+        "description": "pant",
+        "price": 100000,
+        "stock": 100,
+        "imgUrl": "image_url",
+        "categoryId": 4,
+        "authorId": 3
+    },
+    {
+        "name": "Black shoe",
+        "description": "shoe",
+        "price": 100000,
+        "stock": 100,
+        "imgUrl": "image_url",
+        "categoryId": 5,
+        "authorId": 1
+    },
+    {
+        "name": "White shoe",
+        "description": "shoe",
+        "price": 100000,
+        "stock": 100,
+        "imgUrl": "image_url",
+        "categoryId": 5,
+        "authorId": 2
+    }
+]

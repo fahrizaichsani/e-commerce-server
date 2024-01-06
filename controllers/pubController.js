@@ -1,12 +1,22 @@
-const { Product } = require('../models')
+const { Product, sequelize } = require('../models')
 const { Category } = require('../models')
 const { User } = require('../models')
+const { Op } = require('sequelize')
 
 class PubController {
     static async showProducts(req, res, next) {
         try {
-            const allProducts = await Product.findAll()
+            const { search } = req.query
+            const query = {}
 
+            if (search) {
+                query.where = {
+                    name: {
+                        [Op.iLike]: `%${search}%`
+                    }
+                }
+            }
+            const allProducts = await Product.findAll(query)
             res.status(200).json(
                 allProducts
             )

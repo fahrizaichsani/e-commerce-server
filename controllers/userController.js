@@ -8,8 +8,8 @@ class UserController {
       const user = await User.create(req.body);
 
       res.status(201).json({
-        message: 'Register Success',
         id: user.id,
+        username: user.username,
         email: user.email
       })
     } catch (error) {

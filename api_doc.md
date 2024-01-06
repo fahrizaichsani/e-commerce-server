@@ -52,15 +52,24 @@ List of available endpoints:
 
 Request:
 
+- headers:
+
+```json
+{
+  "Authorization": "Admin only",
+  "Authentication": "Bearer <access_token>"
+}
+```
+
 - body:
 
 ```json
 {
-  "username": "string",
-  "email": "string",
-  "password": "string",
-  "phoneNumber": "string",
-  "address": "string"
+  "username": "staff",
+  "email": "staff@mail.com",
+  "password": "staff",
+  "phoneNumber": "08212121",
+  "address": "Indonesia"
 }
 ```
 
@@ -68,9 +77,9 @@ _Response (201 - Created)_
 
 ```json
 {
-  "message": "Register Success",
-  "id": "integer",
-  "email": "string"
+  "id": 1,
+  "username": "staff",
+  "email": "staff@mail.com"
 }
 ```
 
@@ -108,8 +117,8 @@ Request:
 
 ```json
 {
-  "email": "string",
-  "password": "string"
+  "email": "admin@mail.com",
+  "password": "admin"
 }
 ```
 
@@ -118,7 +127,7 @@ _Response (200 - OK)_
 
 ```json
 {
-  "access_token": "string"
+  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBtYWlsLmNvbSIsImlhdCI6MTcwNDQ3NjQ5MH0.BEOqMbG6dj3fGv1oyAUMLou6PF0rPSZouo8WeLysJTI"
 }
 ```
 
@@ -160,7 +169,7 @@ Request:
 
 ```json
 {
-  "name": "string"
+  "name": "Glove"
 }
 ```
 
@@ -169,13 +178,10 @@ _Response (201 - Created)_
 
 ```json
 {
-  "message": "Add Category Success",
-  "category": {
-    "id": "integer",
-    "name": "string",
-    "updatedAt": "date",
-    "createdAt": "date"
-  }
+  "id": 1,
+  "name": "Glove",
+  "updatedAt": "2024-01-05T17:46:50.005Z",
+  "createdAt": "2024-01-05T17:46:50.005Z"
 }
 ```
 
@@ -190,6 +196,7 @@ _Response (400 - Bad Request)_
 &nbsp;
 
 ## 4. GET /categories
+Description: Get all categories
 
 Request:
 
@@ -206,16 +213,16 @@ _Response (200 - OK)_
 ```json
 [
     {
-        "id": "integer",
-        "name": "string",
-        "createdAt": "string",
-        "updatedAt": "string"
+        "id": 1,
+        "name": "Glove",
+        "createdAt": "2024-01-04T08:18:39.446Z",
+        "updatedAt": "2024-01-04T08:18:39.446Z"
     },
     {
-        "id": "integer",
-        "name": "string",
-        "createdAt": "string",
-        "updatedAt": "string"
+        "id": 2,
+        "name": "Shoe",
+        "createdAt": "2024-01-04T08:18:39.446Z",
+        "updatedAt": "2024-01-04T08:18:39.446Z"
     }
     ...
 ]
@@ -224,6 +231,7 @@ _Response (200 - OK)_
 &nbsp;
 
 ## 5. PUT /categories/:id
+Description: Update specific category based on id
 
 Request:
 
@@ -239,7 +247,7 @@ Request:
 
 ```json
 {
-  "id": "integer"
+  "id": "integer (required)"
 }
 ```
 
@@ -249,13 +257,10 @@ _Response (200 - OK)_
 
 ```json
 {
-  "message": "Update Success",
-  "data": {
-    "id": "integer",
-    "name": "string",
-    "createdAt": "string",
-    "updatedAt": "string"
-  }
+  "id": 1,
+  "name": "Glove",
+  "createdAt": "2024-01-04T08:18:39.446Z",
+  "updatedAt": "2024-01-05T18:02:33.194Z"
 }
 ```
 
@@ -278,6 +283,7 @@ _Response (400 - Bad Request)_
 &nbsp;
 
 ## 6. DELETE /categories/:id
+Description: Delete specific category based on id
 
 Request:
 
@@ -293,7 +299,7 @@ Request:
 
 ```json
 {
-  "id": "integer"
+  "id": "integer (required)"
 }
 ```
 
@@ -303,13 +309,7 @@ _Response (200 - OK)_
 
 ```json
 {
-  "data": {
-    "id": "intger",
-    "name": "string",
-    "createdAt": "string",
-    "updatedAt": "string"
-  },
-  "message": "<entity name> sucess to delete"
+  "message": "Glove success to delete"
 }
 ```
 
@@ -339,12 +339,12 @@ Request:
 
 ```json
 {
-  "name": "string",
-  "description": "string",
-  "price": "integer",
-  "stock": "integer",
-  "imgUrl": "string",
-  "categoryId": "integer"
+  "name": "Black Glove",
+  "description": "Glove with black color",
+  "price": 10000,
+  "stock": 100,
+  "imgUrl": "image_glove",
+  "categoryId": 1
 }
 ```
 
@@ -353,15 +353,15 @@ _Response (201 - Created)_
 
 ```json
 {
-  "message": "Add Product Success",
-  "id": "integer",
-  "name": "string",
-  "description": "string",
-  "price": "integer",
-  "stock": "integer",
-  "imgUrl": "string",
-  "createdAt": "date",
-  "updatedAt": "date"
+  "id": 1,
+  "name": "Black Glove",
+  "description": "Glove with black color",
+  "price": 10000,
+  "stock": 100,
+  "imgUrl": "image_glove",
+  "categoryId": 1,
+  "createdAt": "2024-01-05T18:08:48.953Z",
+  "updatedAt": "2024-01-05T18:08:48.953Z"
 }
 ```
 
@@ -392,6 +392,7 @@ OR
 &nbsp;
 
 ## 8. GET /products
+Description: Get all products
 
 Request:
 
@@ -408,63 +409,223 @@ _Response (200 - OK)_
 ```json
 [
     {
-        "id": 10,
-        "name": "Blue Pink Shirt",
-        "description": "skipdulu",
+        "id": 1,
+        "name": "Black Glove",
+        "description": "Glove with black color",
         "price": 1000000,
         "stock": 10,
-        "imgUrl": "skipdulu",
+        "imgUrl": "image_glove",
         "categoryId": 1,
         "authorId": 2,
-        "createdAt": "2024-01-05T15:57:39.662Z",
-        "updatedAt": "2024-01-05T15:57:39.662Z",
-        "Category": {
-            "id": 1,
-            "name": "cek2",
-            "createdAt": "2024-01-04T08:18:39.446Z",
-            "updatedAt": "2024-01-05T13:10:53.062Z"
-        },
+        "createdAt": "2024-01-04T15:54:50.588Z",
+        "updatedAt": "2024-01-04T15:54:50.588Z",
         "User": {
             "id": 2,
-            "username": "staff1",
-            "email": "staff1@mail.com",
+            "username": "staff",
+            "email": "staff@mail.com",
             "role": "Staff",
-            "phoneNumber": "00000",
-            "address": "dimana aja",
+            "phoneNumber": "08212121",
+            "address": "indonesia",
             "createdAt": "2024-01-04T08:21:28.564Z",
             "updatedAt": "2024-01-04T08:21:28.564Z"
         }
     },
     {
-        "id": 9,
-        "name": "Red Pink Shirt",
-        "description": "skipdulu",
+        "id": 2,
+        "name": "White Glove",
+        "description": "Glove with white color",
         "price": 1000000,
         "stock": 10,
-        "imgUrl": "skipdulu",
+        "imgUrl": "image_glove",
         "categoryId": 1,
-        "authorId": 2,
-        "createdAt": "2024-01-05T13:47:30.786Z",
-        "updatedAt": "2024-01-05T13:47:30.786Z",
-        "Category": {
-            "id": 1,
-            "name": "cek2",
-            "createdAt": "2024-01-04T08:18:39.446Z",
-            "updatedAt": "2024-01-05T13:10:53.062Z"
-        },
+        "authorId": 1,
+        "createdAt": "2024-01-04T16:01:39.714Z",
+        "updatedAt": "2024-01-04T16:01:39.714Z",
         "User": {
-            "id": 2,
-            "username": "staff1",
-            "email": "staff1@mail.com",
-            "role": "Staff",
-            "phoneNumber": "00000",
-            "address": "dimana aja",
-            "createdAt": "2024-01-04T08:21:28.564Z",
-            "updatedAt": "2024-01-04T08:21:28.564Z"
+            "id": 1,
+            "username": "admin",
+            "email": "admin@mail.com",
+            "role": "Admin",
+            "phoneNumber": "08212121",
+            "address": "indonesia",
+            "createdAt": "2024-01-04T08:18:39.519Z",
+            "updatedAt": "2024-01-04T08:18:39.519Z"
         }
     }
     ...
 ]
+```
+
+&nbsp;
+
+## 9. GET /products/:id
+Description: Get specific product based on id
+
+Request:
+
+- headers:
+
+```json
+{
+  "Authentication": "Bearer <access_token>"
+}
+```
+
+- params:
+
+```json
+{
+  "id": "integer (required)"
+}
+```
+
+_Response (200 - OK)_
+
+```json
+{
+  "id": 1,
+  "name": "Black Glove",
+  "description": "Glove with black color",
+  "price": 1000000,
+  "stock": 10,
+  "imgUrl": "image_glove",
+  "categoryId": 1,
+  "authorId": 2,
+  "createdAt": "2024-01-04T15:54:50.588Z",
+  "updatedAt": "2024-01-04T15:54:50.588Z"
+}
+```
+
+_Response (404 - Not Found)_
+
+```json
+{
+  "message": "not found"
+}
+```
+
+&nbsp;
+
+## 10. PUT /products/:id
+Description: Update specific product based on id (Admin can update all products while staff can only update their own)
+
+Request:
+
+- headers:
+
+```json
+{
+  "Authentication": "Bearer <access_token>",
+  "Authorization": "Admin and Staff"
+}
+```
+
+- params:
+
+```json
+{
+  "id": "integer (required)"
+}
+```
+
+- body:
+
+```json
+{
+  "name": "Black Glove",
+  "description": "Glove with black color",
+  "price": 10000,
+  "stock": 100,
+  "imgUrl": "image_glove",
+  "categoryId": 1
+}
+```
+
+_Response (200 - OK)_
+
+```json
+{
+  "id": 1,
+  "name": "Black Glove",
+  "description": "Glove with black color",
+  "price": 10000,
+  "stock": 100,
+  "imgUrl": "image_glove",
+  "categoryId": 1,
+  "authorId": 2,
+  "createdAt": "2024-01-04T15:54:50.588Z",
+  "updatedAt": "2024-01-05T18:32:48.198Z"
+}
+```
+
+_Response (404 - Not Found)_
+
+```json
+{
+  "message": "not found"
+}
+```
+
+_Response (400 - Bad Request)_
+
+```json
+{
+  "message": "Name cannot empty"
+}
+OR
+{
+  "message": "Description cannot empty"
+}
+OR
+{
+  "message": "Price must be above 1000"
+}
+OR
+{
+  "message": "Category Id cannot empty"
+}
+```
+
+&nbsp;
+
+## 11. DELETE /products/:id
+Description: Delete specific product based on id (Admin can delete all products while staff can only delete their own)
+
+Request:
+
+- headers:
+
+```json
+{
+  "Authentication": "Bearer <access_token>",
+  "Authorization": "Admin and Staff"
+}
+```
+
+- params:
+
+```json
+{
+  "id": "integer (required)"
+}
+```
+
+- body:
+
+_Response (200 - OK)_
+
+```json
+{
+  "message": "Black Glove success to delete"
+}
+```
+
+_Response (404 - Not Found)_
+
+```json
+{
+  "message": "not found"
+}
 ```
 
 &nbsp;
@@ -475,7 +636,15 @@ _Response (401 - Unauthorized)_
 
 ```json
 {
-  "message": "Invalid token"
+  "message": "Unathorized"
+}
+```
+
+_Response (403 - Forbidden)_
+
+```json
+{
+  "message": "Forbidden"
 }
 ```
 
