@@ -26,6 +26,7 @@ class ProductController {
                 updatedAt: product.updatedAt
             })
         } catch (error) {
+            console.log(error);
             next(error)
         }
     }
@@ -118,7 +119,7 @@ class ProductController {
         try {
             const product = await Product.findByPk(req.params.id)
             if (!product) {
-                throw { name: 'not found' }
+                throw { name: 'error not found' }
             }
 
             if (!req.file) {

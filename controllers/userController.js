@@ -20,6 +20,7 @@ class UserController {
 
   static async login(req, res, next) {
     try {
+      console.log(req.body);
       const { email, password } = req.body
 
       if (!email) {

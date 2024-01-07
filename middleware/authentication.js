@@ -12,16 +12,18 @@ const authentication = async (req, res, next) => {
         if (type !== 'Bearer') {
             throw { name: 'Unauthorized' }
         }
+        if (!token) {
+            throw { name: 'Unauthorized' }
+        }
 
-        const payload = verifyToken(token) 
-        console.log(payload);
+        const payload = verifyToken(token)
 
         const user = await User.findByPk(payload.id)
         if (!user) {
             throw { name: 'Unauthorized' }
         }
 
-        req.user = user 
+        req.user = user
 
         next()
     } catch (error) {

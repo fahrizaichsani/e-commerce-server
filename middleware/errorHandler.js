@@ -19,8 +19,9 @@ const errorHandler = (error, req, res, next) => {
         case 'Password cannot empty':
             res.status(400).json({ message: 'Password cannot empty' })
             break;
-        case 'Unathorized':
-            res.status(401).json({ message: 'Unathorized' })
+        case 'Unauthorized':
+        case 'JsonWebTokenError':
+            res.status(401).json({ message: 'Error authentication' })
             break;
         case 'Please upload an image':
             res.status(400).json({ message: 'Please upload an image' })
