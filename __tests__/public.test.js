@@ -72,3 +72,20 @@ describe("GET /publics/pub", () => {
         expect(response.body.length).toEqual(10)
     });
 })
+
+describe("GET /publics/pub/:id", () => {
+    test("a. Berhasil mendapatkan 1 Entitas Utama sesuai dengan params id yang diberikan", async () => {
+        const response = await request(app).get(`/publics/pub/${3}`)
+        console.log(response.body);
+
+        expect(response.status).toBe(200)
+        expect(response.body).toHaveProperty("id", 3)
+    })
+
+    test("b. Gagal mendapatkan Entitas Utama karena params id yang diberikan tidak ada di database / invalid", async () => {
+        const response = await request(app).get(`/publics/pub/${1000}`)
+
+        expect(response.status).toBe(404)
+		expect(response.body.message).toEqual("Data not found")
+    });
+})
